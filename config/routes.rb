@@ -14,7 +14,7 @@ namespace :admin do
 #会員側
 scope module: :public do
   root :to => 'homes#top'
-  get 'home/about' => 'homes#about'
+  get '/about' => 'homes#about'
   resources :items, only: [:index, :show]
   resource :customer, only: [:show, :edit, :update]
   patch 'customer/unsubscribe' => 'customers#unsubscribe'
