@@ -1,0 +1,9 @@
+<div class = "col-md-8 offset-md-1">
+  <h4>ジャンル編集</h4>
+  <%= form_with model: @genre, url:"/admin/genres/#{@genre.id}", local:true do |f| %>
+    <div>ジャンル名</div>
+    <%= f.text_field :genre_name, autofocus:true %>
+    <%= f.submit '変更を保存', class: 'btn btn-success' %>
+  <% end %>
+</div>
+
