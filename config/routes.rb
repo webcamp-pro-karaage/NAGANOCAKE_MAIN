@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  
+  devise_for :admin, controllers: {
+    sessions: 'admin/sessions'
+  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 #管理者側
@@ -25,6 +29,10 @@ scope module: :public do
   post 'order/confirm' => 'orders#confirm'
   get 'order/complete' => 'orders#complete'
   resources :addresses, except: [:new, :show]
+  devise_for :customers, controllers: {
+    sessions: 'public/customers/sessions',
+    registrations: 'public/customers/registrations'
+  }
   end
 
 end
