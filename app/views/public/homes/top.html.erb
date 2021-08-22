@@ -30,7 +30,7 @@
           <%= attachment_image_tag item, :image, size: '100x100', format: 'jpeg', fallback: 'no_image.png', class: "rounded-top" %><br>
         <% end %>
         <div class="row mt-3">
-          <span class="border-bottom px-3"><%= item.name %></span>
+          <span class="border-bottom px-3"><%= item.item_name %></span>
         </div>
         <div class="row mt-1">
           <span class="offset-8">￥<%= item.price_without_tax %></span>
