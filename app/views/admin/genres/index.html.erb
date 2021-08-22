@@ -1,5 +1,12 @@
 <div class = "col-md-8 offset-md-1">
    <h4>ジャンル一覧・追加</h4>
+   <% if @genre.errors.any? %>
+     <%= @genre.errors.count %>errors prohibited this obj from being saved:
+     <ul><%= @genre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+     </ul>
+     <% end %>
+   <% end %>
 
    <div>ジャンル名</div>
    <%= form_with model: @genre, url:'/admin/genres', local:true do |f| %>
