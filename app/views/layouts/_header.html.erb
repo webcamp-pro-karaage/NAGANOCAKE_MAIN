@@ -2,32 +2,34 @@
  <div class="container-fluid ">
   <nav class="navbar navbar-expand-mg navbar-light bg-light navbar navbar-dark border-bottom" style="padding:10px;">
    <div class="navbar-brand d-block">
-     <%= link_to image_tag('/images/logo/logo.png'), url: root_path %>
+     <%= link_to root_path do %>
+      <%= image_tag 'logo/logo2.png' %>
+     <% end %>
    </div>
- 
+
    <div>
     <ul class="nav pull-right">
-    <%# if customer_signed_in? %>
+    <% if customer_signed_in? %>
     <!--custmerがログインしている時 -->
-      <li>ようこそ、<%#= current_customer.last_name + current_customer.first_name %>さん！</li>
+      <li>ようこそ、<%= current_customer.last_name + current_customer.first_name %>さん！</li>
       <li class="nav-item pl-2 active"><%#= link_to "マイページ", customer_path %></li>
-      <li class="nav-item pl-2"><%#= link_to "商品一覧", item_path %></li>
+      <li class="nav-item pl-2"><%= link_to "商品一覧", items_path %></li>
       <li class="nav-item pl-2"><%#= link_to "カート", cart_item_path %></li>
-      <li class="nav-item pl-2"><%#= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
-    <%# elsif admin_signed_in? %>
+      <li class="nav-item pl-2"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+    <% elsif admin_signed_in? %>
     <!-- adminがログインしている時 -->
       <li class="nav-item pl-2"><%= link_to "商品一覧", admin_items_path %></li>
-      <li class="nav-item pl-2"><%#= link_to "会員一覧", admin_customer_path %></li>
-      <li class="nav-item pl-2"><%#= link_to "注文履歴一覧", admin_order_path %></li>
-      <li class="nav-item pl-2"><%#= link_to "ジャンル一覧", admin_genre_path %></li>
-      <li class="nav-item pl-2" ><%#= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-    <%# else %>
+      <li class="nav-item pl-2"><%= link_to "会員一覧", admin_customer_path %></li>
+      <li class="nav-item pl-2"><%= link_to "注文履歴一覧", admin_order_path %></li>
+      <li class="nav-item pl-2"><%= link_to "ジャンル一覧", admin_genres_path %></li>
+      <li class="nav-item pl-2" ><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+    <% else %>
       <!-- 誰もログインしていない時 -->
       <li class="nav-item pl-2"><%= link_to "About", about_path %></li>
       <li class="nav-item pl-2"><%#= link_to "商品一覧", items_path %></li>
-      <li class="nav-item pl-2"><%#= link_to "新規登録", new_customer_registration_path %></li>
-      <li class="nav-item pl-2"><%#= link_to "ログイン", new_customer_session_path %></li>
-    <%# end %>
+      <li class="nav-item pl-2"><%= link_to "新規登録", new_customer_registration_path %></li>
+      <li class="nav-item pl-2"><%= link_to "ログイン", new_customer_session_path %></li>
+    <% end %>
     </ul>
   </div>
 
