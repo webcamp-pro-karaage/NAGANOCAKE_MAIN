@@ -1,0 +1,16 @@
+<div class = "col-md-8 offset-md-1">
+ <div class="col-md-8">
+  <div>
+   <h3>配送先編集</h3>
+    <%= form_with model: @address, url: address_path, method: :patch, local:true do |f| %>
+     <h4>郵便番号(ハイフンなし)</h4>
+      <%= f.text_field :post_code %>
+     <h4>住所</h4>
+      <%= f.text_field :address %>
+     <h4>宛名</h4>
+      <%= f.text_field :name %>
+     <%= f.submit "変更内容を保存", class: "btn btn-lg btn-success" %>
+    <% end %>
+  </div>
+ </div>
+</div>
