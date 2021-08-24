@@ -12,18 +12,14 @@ class Public::AddressesController < ApplicationController
     def create
       @address = Address.new(address_params)
       @address.customer_id = current_customer.id
-      @address.save
-      redirect_to addresses_path
-      
-      # customer部分が実装できたら↓↓
-      # if @address.save
-      #   flash[:notice] = "登録しました"
-      #   redirect_to addresses_path
-      # else
-      #   @customer = current_customer
-      #   @address = @customer.addresses.all
-      #   render :index
-      # end
+      if @address.save
+        flash[:notice] = "登録完了致しました"
+        redirect_to addresses_path
+      else
+        @customer = current_customer
+        @addresses = @customer.addresses
+        render :index
+      end
     end
 
     def edit
