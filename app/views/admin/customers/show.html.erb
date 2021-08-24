@@ -23,7 +23,7 @@
       <th>メールアドレス</th><td><%= @customer.email %></td>
     </tr>
     <tr>
-      <th>会員ステータス</th><td><%= @customer.is_deleted ? '有効' : '退会' %></td>
+      <th>会員ステータス</th><td><%= @customer.is_deleted ? '退会' : '有効' %></td>
     </tr>
   </table>
   <%= link_to "編集する", edit_admin_customer_path, class: 'btn btn-success' %>
