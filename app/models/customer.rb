@@ -14,5 +14,9 @@ class Customer < ApplicationRecord
   validates :post_code, presence: true
   validates :address, presence: true
   validates :phone_number, presence: true
+  
+  def full_name
+    last_name + first_name
+  end
 
 end
