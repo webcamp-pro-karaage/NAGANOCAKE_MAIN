@@ -1,5 +1,5 @@
 class Admin::ItemsController < ApplicationController
-
+  skip_before_action :authenticate_customer!, only: [:show, :index]
   def new
     @item = Item.new
   end
