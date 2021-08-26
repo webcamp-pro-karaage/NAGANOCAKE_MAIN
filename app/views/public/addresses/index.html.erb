@@ -30,7 +30,7 @@
         <h4>宛名</h4>
          <%= f.text_field :name, class: 'form-control' %>
        </div>
-       <%= f.submit '新規登録' ,class: "btn btn-lg btn-success" %>
+       <%= f.submit '新規登録' ,class: "btn btn-success" %>
       <% end %>
 
 
@@ -51,8 +51,8 @@
          <td><%= address.address %></td>
          <td><%= address.name %></td>
          <td>
-          <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-lg btn-success" %>
-          <%= link_to "削除する", address_path(address.id), method: :delete, 'data confirm' => "本当に削除しますか？", class: "btn btn-lg btn-success" %>
+          <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-success" %>
+          <%= link_to "削除する", address_path(address.id), method: :delete, 'data confirm' => "本当に削除しますか？", class: "btn btn-success" %>
          </td>
         </tr>
        <% end %>
