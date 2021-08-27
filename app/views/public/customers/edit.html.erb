@@ -1,62 +1,68 @@
 <h1>会員情報編集</h1>
 
-<%= form_with model: @customer do |f| %>
-
-<table class="table table-sm">
-<div class="table-responsive ">
-<table class="table align-middle mx-5 py-5 ">
-
-<tr>
-  <td>氏名</td>
-  <td><div class="last_name"></div>
-    <%= f.text_field :last_name %></td>
-  <td><div class="first_name"></div>
-    <%= f.text_field :first_name %></td>
-</tr>
-
-<tr>
-  <td>カナ</td>
-  <td><div class="last_name_kana"></div>
-    <%= f.text_field :last_name_kana %></td>
-  <td><div class="first_name_kana"></div>
-    <%= f.text_field :first_name_kana %></td>
-</tr>
-
-<tr>
-  <td>郵便番号</td>
-  <td colspan="2"><div class="post_code"></div>
-    <%= f.text_field :post_code %></td>
-  <td></td>
-</tr>
-
-<tr>
-  <td>住所</td>
-  <td colspan="2"><div class="address"></div>
-    <%= f.text_field :address, class: "customer_edit_address" %></td>
-</tr>
-
-<tr>
-  <td>電話番号</td>
-  <td colspan="2"><div class="phone_number"></div>
-    <%= f.text_field :phone_number %></td>
-</tr>
-
-<tr>
-  <td>メアド</td>
-  <td colspan="2"><div class="email"></div>
-    <%= f.text_field :email %></td>
-</tr>
-
-</div>
-</table>
-</table>
-
-<div class="submit">
-  <%= f.submit "編集内容を保存", class:"btn btn-outline-success" %>
-</div>
+<div class="container">
+  <div class='row'>
+    <div class='col-md-12 col-lg-12 content'>
+    <%= form_with model: @customer, url: customer_path, local: true, method: :PATCH do |f| %>
+    
+<table class="table">
+    <div class="submit">
+      <%= f.submit "編集内容を保存", class:"btn btn-outline-success" %>
+        <%= link_to "退会", customer_withdraw_path, method: :get, class: "btn btn-outline-danger" %>
+    </div></br>
   
-<% end %>
-
-<div class="taikaibotan">
-  <%= link_to "退会", customer_withdraw_path, method: :get, class: "btn btn-outline-danger" %>
+  <tr>
+    <td>氏名</td>
+    <td><div class="last_name"></div>
+      <%= f.text_field :last_name %></td>
+    <td><div class="first_name"></div>
+      <%= f.text_field :first_name %></td>
+  </tr>
+  
+  <tr>
+    <td>カナ</td>
+    <td><div class="last_name_kana"></div>
+      <%= f.text_field :last_name_kana %></td>
+    <td><div class="first_name_kana"></div>
+      <%= f.text_field :first_name_kana %></td>
+  </tr>
+  
+  <tr>
+    <td>郵便番号</td> 
+    <td colspan="2"><div class="post_code"></div>
+      <%= f.text_field :post_code %></td>
+    <td></td>
+  </tr>
+  
+  <tr>
+    <td>住所</td>
+    <td colspan="3"><div class="address"></div>
+      <%= f.text_field :address, class: "customer_edit_address" %></td>
+  </tr>
+  
+  <tr>
+    <td>電話番号</td>
+    <td colspan="3"><div class="phone_number"></div>
+      <%= f.text_field :phone_number %></td>
+  </tr>
+  
+  <tr>
+    <td>メアド</td>
+    <td colspan="3"><div class="email"></div>
+      <%= f.text_field :email %></td>
+  </tr>
+  <% end %>
+  
+</table>  
 </div>
+</div>
+</div>
+
+
+
+
+<style>
+  table {
+  border: 1px solid silver;
+}
+</style>

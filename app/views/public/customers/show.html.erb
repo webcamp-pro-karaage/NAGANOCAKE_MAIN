@@ -1,11 +1,15 @@
 <h1>マイページ</h1>
-    
-<h3 class="mypage-showh3">登録情報</h3>
-  <%= link_to "編集する", edit_customer_path,  class: "btn btn-outline-success" %>
 
-<div id="mypage-showtable">
-<table class="table table-responsive">
-  <tbody>
+<div class="container">
+  <div class="main">
+    <div class="d-flex flex-row">
+      <div class="p-2 bd-highlight"><%= link_to "登録情報編集", edit_customer_path, class:"btn btn-outline-success" %></div>
+      <div class="p-2 bd-highlight"><%= link_to "配送先一覧を見る", addresses_path,  class: "btn btn-outline-primary test" %></div>
+      <div class="p-2 bd-highlight"><%= link_to "注文履歴一覧を見る", orders_path,  class: "btn btn-outline-primary test" %></div>
+    </div>
+    
+<table align="center" class="table table-bordered border-warning border-4 w-0 p-3">
+<tbody>
 <tr><th>氏名</th><td><%= @customer.last_name %> <%= @customer.first_name %></td></tr>
 <tr><th>カナ</th><td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td></tr>
 <tr><th>郵便番号</th><td><%= @customer.post_code %></td></tr>
@@ -15,11 +19,4 @@
 </tbody>
 </table>
 </div>
-
-
-
-      <h3 class="mypage-showh3">配送先</h3>
-        <%= link_to "一覧を見る", addresses_path,  class: "btn btn-outline-primary test" %>
-</br>
-      <h3 class="mypage-showh3">注文履歴</h3>
-        <%= link_to "一覧を見る", orders_path,  class: "btn btn-outline-primary test" %>
+</div>
