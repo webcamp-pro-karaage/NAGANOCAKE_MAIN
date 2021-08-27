@@ -53,6 +53,18 @@ class Public::OrdersController < ApplicationController
     end
     redirect_to order_complete_path
   end
+  
+  
+def  index
+	@orders = current_customer.orders
+end
+
+def show
+	@order = Order.find(params[:id])
+	@postage = 800
+	@ordered_items = @order.ordered_items 
+end
+
 
   private
 

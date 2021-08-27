@@ -1,0 +1,43 @@
+<div class = "col-md-8 offset-md-1">
+	<h2>注文履歴詳細</h2>
+
+ <div>
+  <h4>注文情報</h4>
+  <table class="table-bordered">
+   <tr>
+    <th>注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d') %></td></tr>
+    <th>配送先</th><td>〒<%= @order.post_code %><br><%= @order.address %><br><%= @order.name %></td>
+    <th>支払方法</th><td><%= @order.payment_method %></td>
+    <th>ステータス</th><td><%= @order.order_status %></td>
+  </table>
+ </div>
+ <div>
+  <h4>注文内容</h4>
+  <table class="table-bordered">
+   <tr>
+    <th>商品</th>
+    <th>単価（税込)</th>
+    <th>個数</th>
+    <th>小計</th>
+   </tr>
+   <% @ordered_items.each do |ordered_item| %>
+    <tr>
+     <td><%= ordered_item.item.item_name %></td>
+     <td><%= ordered_item.item.add_tax_price_without_tax %></td>
+     <td><%= ordered_item.quantity %></td>
+     <td><%= ordered_item.subtotal %></td>
+    </tr>
+   <% end %>
+  </table>
+ </div>
+
+ <div>
+   <h4>請求情報</h4>
+    <table class="table-bordered">
+     <tr>
+      <th>商品合計</th><td><%= @order.total_payment-800 %></td>
+      <th>配送料</th><td><%= @order.postage %></td>
+      <th><strong>ご請求金額</strong></th><th><%= @order.total_payment %></th>
+     </tr>
+    </table>
+ </div>
