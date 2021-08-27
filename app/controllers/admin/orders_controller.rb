@@ -12,6 +12,7 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
+
     @order.update(order_params)
     @ordered_items = @order.ordered_items
     if @order.order_status == "入金確認"
@@ -21,6 +22,7 @@ class Admin::OrdersController < ApplicationController
       end
     end
     redirect_to admin_order_path(@order.id)
+
   end
 
 
