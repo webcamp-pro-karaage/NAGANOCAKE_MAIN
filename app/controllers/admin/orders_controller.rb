@@ -1,10 +1,9 @@
 class Admin::OrdersController < ApplicationController
   skip_before_action :authenticate_customer!
   def show
-    @orders = Order.all
     @order = Order.find(params[:id])
     @postage = 800
-    @ordered_items = OrderedItem.all
+    @ordered_items = @order.ordered_items
     @total_price = 0
     @ordered_items.each do |ordered_item|
       @total_price += ordered_item.subtotal
@@ -13,10 +12,17 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    @ordered_item = OrderedItem.find(params[:id])
-    if @ordered_item.update(ordered_item_params)
-       redirect_to admin_order_path(ordered_item.order.id)
+
+    @order.update(order_params)
+    @ordered_items = @order.ordered_items
+    if @order.order_status == "入金確認"
+      @ordered_items.each do |ordered_item|
+        ordered_item.product_status = "製作待ち"
+        ordered_item.save
+      end
     end
+    redirect_to admin_order_path(@order.id)
+
   end
 
 
