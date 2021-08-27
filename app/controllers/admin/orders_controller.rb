@@ -13,14 +13,10 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    if @order.update(order_params)
-      redirect_to admin_order_path(@order.id)
+    @ordered_item = OrderedItem.find(params[:id])
+    if @ordered_item.update(ordered_item_params)
+       redirect_to admin_order_path(ordered_item.order.id)
     end
-
-    #@ordered_item = OrderedItem.find(params[:id])
-    #if @ordered_item.update(ordered_item_params)
-      #redirect_to admin_order_path(ordered_item.order.id)
-    #end
   end
 
 
