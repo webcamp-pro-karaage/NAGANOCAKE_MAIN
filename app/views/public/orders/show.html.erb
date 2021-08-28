@@ -5,7 +5,7 @@
   <h4>注文情報</h4>
   <table class="table-bordered">
    <tr>
-    <th>注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d') %></td></tr>
+    <th>注文日</th><td></td><%= @order.created_at.strftime('%Y/%m/%d') %></td></tr>
     <th>配送先</th><td>〒<%= @order.post_code %><br><%= @order.address %><br><%= @order.name %></td>
     <th>支払方法</th><td><%= @order.payment_method %></td>
     <th>ステータス</th><td><%= @order.order_status %></td>

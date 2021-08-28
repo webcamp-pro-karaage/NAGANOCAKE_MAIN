@@ -8,6 +8,15 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
   end
+  
+  def index
+    @orders = Order.all
+  end
+  
+  def show
+    @order = Order.find(params[:id])
+    @ordered_items = @order.ordered_items
+  end
 
 
   def confirm
@@ -49,22 +58,12 @@ class Public::OrdersController < ApplicationController
       @ordered_item.order_id = @order.id
       @ordered_item.purchase_price = cart_item.item.add_tax_price_without_tax
       @ordered_item.quantity = cart_item.quantity
-      @ordered_item.save
+      if @ordered_item.save
+        cart_item.destroy
+      end
     end
     redirect_to order_complete_path
   end
-  
-  
-def  index
-	@orders = current_customer.orders
-end
-
-def show
-	@order = Order.find(params[:id])
-	@postage = 800
-	@ordered_items = @order.ordered_items 
-end
-
 
   private
 
