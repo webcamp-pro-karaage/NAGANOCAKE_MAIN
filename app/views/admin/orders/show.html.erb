@@ -2,13 +2,21 @@
   <div class="row">
     <div class = "col-md-12">
      <h2>注文履歴詳細</h2>
-      <table class="table table-sm mb-3">
+      <table class="table table-sm mb-3 table-bordered">
         <tr>
           <th>購入者</th><td><%= link_to @order.customer.last_name + @order.customer.first_name, admin_customer_path(@order) %></td>
+        </tr>
+        <tr>
           <th>注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
-          <th>配送先</th><td>〒<%=  " " + @order.post_code + " " + @order.address %></td></br>
-                         <td><%= @order.customer.last_name + @order.customer.first_name %></td>
+        </tr>
+        <tr>
+          <th>配送先</th><td>〒<%=  " " + @order.post_code + " " + @order.address %></br>
+                         <%= @order.customer.last_name + @order.customer.first_name %></td>
+        </tr>
+        <tr>
           <th>支払方法</th><td><%= @order.payment_method ? 'クレジットカード' : '銀行振込' %></td>
+        </tr>
+        <tr>
           <th>注文ステータス</th>
       　    <td>
       　      <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local:true do |f| %>
@@ -22,7 +30,7 @@
   </div>
   <div class="row mb-5">
     <div class="col-md-7">
-      <table class="table mt-3 table-hover table-inverse">
+      <table class="table mt-3 table-hover table-inverse table-bordered">
           <thead>
              <tr>
                <th>商品名</th>
@@ -50,10 +58,14 @@
       </table>
     </div>
     <div class="col">
-      <table class="table">
+      <table class="table table-bordered">
         <tr>
           <th>商品合計</th><td><%= @total_price %>円</td>
+        </tr>
+        <tr>
           <th>送料</th><td><%= @postage %>円</td>
+        </tr>
+        <tr>
           <th>請求金額合計</th><td><%= @order.total_payment %>円</td>
         </tr>
       </table>
