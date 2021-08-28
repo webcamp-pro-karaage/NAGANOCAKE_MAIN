@@ -1,0 +1,17 @@
+<div class = "col-md-8 offset-md-1">
+  <% if @genre.errors.any? %>
+     <%= @genre.errors.count %>errors prohibited this obj from being saved:
+     <ul><%= @genre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+     </ul>
+     <% end %>
+   <% end %>
+
+  <h4>ジャンル編集</h4>
+  <%= form_with model: @genre, url:"/admin/genres/#{@genre.id}", local:true do |f| %>
+    <div>ジャンル名</div>
+    <%= f.text_field :genre_name, autofocus:true %>
+    <%= f.submit '変更を保存', class: 'btn btn-success' %>
+  <% end %>
+</div>
+

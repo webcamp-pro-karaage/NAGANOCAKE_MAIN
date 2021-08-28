@@ -1,0 +1,30 @@
+<div class = "col-md-8 offset-md-1">
+<h2>商品一覧</h2>
+<div class = "text-right">
+ <%= link_to "+", new_admin_item_path, class:"btn btn-lg btn-primary rounded-circle" %>
+</div>
+
+ <table class="table">
+  <thead>
+   <tr colspan="2">
+    <th>商品ID</th>
+    <th>商品名</th>
+    <th>税抜価格</th>
+    <th>ジャンル</th>
+    <th>ステータス</th>
+   </tr>
+  </thead>
+  <tbody>
+   <% @items.each do |item| %>
+    <tr colspan="2">
+     <td><%= item.id %></td>
+     <td><%= link_to item.item_name, admin_item_path(item.id) %></td>
+     <td><%= item.price_without_tax %></td>
+     <td><%= item.genre.genre_name %></td>
+     <td><%= item.sales_status ? '販売中' : '販売停止中' %></td>
+<% end %>
+    </tr>
+  </tbody>
+ </table>
+<%= paginate @items %>
+</div>

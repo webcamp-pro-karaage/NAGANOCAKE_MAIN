@@ -9,7 +9,19 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+ 
   <body>
+
+   <div class = "header">
+    <%= render 'layouts/header' %>
+   </div>
+
     <%= yield %>
+
+    <footer>
+      <div class="small text-center text-muted" style="margin: 50px 0;">Copyright © 2021  Karaage</div>
+    </footer>
+
+
   </body>
 </html>
