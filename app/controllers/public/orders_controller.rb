@@ -10,7 +10,7 @@ class Public::OrdersController < ApplicationController
   end
   
   def index
-    @orders = Order.all
+    @orders = current_customer.orders.all
   end
   
   def show
@@ -40,9 +40,9 @@ class Public::OrdersController < ApplicationController
         @order.address = address.address
         @order.name = address.name
       when '2'
-        @order.post_code = new_post_code
-        @order.address = new_address
-        @order.name = new_name
+        @order.post_code = params[:order][:new_post_code]
+        @order.address = params[:order][:new_address]
+        @order.name = params[:order][:new_name]
     end
   end
 
